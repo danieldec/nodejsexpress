@@ -4,7 +4,7 @@ const api = express.Router();
 const ProductoController = require('../controllers/product');
 const auth = require('../middlewares/auth')
 const userCtrl = require('../controllers/user');
-api.get('/products',ProductoController.getProducts);
+api.get('/products',auth,ProductoController.getProducts);
 
 api.get('/products/:productId',ProductoController.getProduct);
 
@@ -21,6 +21,6 @@ api.get('/private',auth,function (req,res) {
 });
 
 api.post('/signup',userCtrl.signUp);
-api.post('/singin',userCtrl.signIn);
+api.post('/signin',userCtrl.signIn);
 
 module.exports = api;
